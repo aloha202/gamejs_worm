@@ -136,7 +136,8 @@ Worm.prototype.next = function () {
     }
     console.log(nextI + '_' + nextJ);
 
-    if(nextI < 0 || nextI >= this.matrixSize || nextJ < 0 || nextJ >= this.matrixSize || this.matrix[nextI][nextJ] > 0){
+    if(nextI < 0 || nextI >= this.matrixSize || nextJ < 0 || nextJ >= this.matrixSize
+        || this.matrix[nextI][nextJ] > 1){//you can walk over your tail!
         this.gameOver();
     }
     if(this.matrix[nextI][nextJ] != 0){//foooddd!
