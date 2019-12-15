@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Worm.JS</title>
+    <link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="worm.css">
+
+	<meta name="yandex-verification" content="6115d38027e428ef" />
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="worm.js"></script>
+	
+	<script type="text/javascript">
+		$(function () {
+		    alert("Press Space to start/pause, Arrow keys to change direction");
+            var myWorm = new Worm($('#wormRoot'));
+            var WORM_MOVING = false;
+            var wormInterval = null;
+		    function buildWorm() {
+
+
+                $(document).keydown(function (e) {
+                    switch (e.keyCode){
+                        case 32:
+                            if(!WORM_MOVING) {
+                                startWorm();
+                            }else{
+                                pauseWorm();
+							}
+                            break;
+                        case 37:
+                            myWorm.setDirection('left');
+                            break;
+                        case 38:
+                            myWorm.setDirection('up');
+                            break;
+                        case 39:
+                            myWorm.setDirection('right');
+                            break;
+                        case 40:
+                            myWorm.setDirection('down');
+                            break;
+                    }
+                });
+            }
+
+            function pauseWorm() {
+                clearInterval(wormInterval);
+                WORM_MOVING = false;
+            }
+
+            function startWorm() {
+                WORM_MOVING = true;
+                wormInterval = setInterval(function () {
+                    try {
+                        myWorm.next();
+                    }catch(e){
+                        alert(e);
+                        $('#wormRoot').html('');
+                        myWorm = new Worm($('#wormRoot'));
+						pauseWorm();
+                    }
+                }, 200);
+            }
+
+            function addFood() {
+				var timeoutValue = myWorm.getRandomInt(2, 5);
+				setTimeout(function () {
+					if(WORM_MOVING){
+					    myWorm.addFood();
+					}
+					addFood();
+                }, timeoutValue * 1000);
+            }
+
+            buildWorm();
+		    addFood();
+
+        })
+
+	</script>
+	
+</head>
+<body>
+	<div id="wormRoot" class="worm-grid">
+
+
+	</div>
+
+</body>
+</html>
