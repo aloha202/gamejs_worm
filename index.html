@@ -6,7 +6,7 @@
 	<title>Worm.JS</title>
     <link rel="stylesheet" href="normalize.css">
 	<link rel="stylesheet" href="worm.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="yandex-verification" content="6115d38027e428ef" />
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -46,6 +46,9 @@
                             break;
                     }
                 });
+                $(".left").click(function(){
+                    myWorm.setDirection('left');  
+                })
             }
 
             function pauseWorm() {
@@ -90,6 +93,44 @@
 
 
 	</div>
+
+    <div class="controls-block">
+        <div class="controls">
+            <div class="play">
+                play
+
+
+            <div class="up">
+
+            </div>
+            <div class="down">
+                
+            </div>
+            <div class="left">
+                
+            </div>
+            <div class="right">
+                
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 </html>
