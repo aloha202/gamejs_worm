@@ -23,14 +23,14 @@
 .controls-block{
 	justify-content: center;
 	align-items: center;
-	height: 25vh;
+	height: 28vh;
 	display: none;
 	width: auto;
 }
 
 .play{
-	width: 70px;
-	height: 70px;
+	width: 60px;
+	height: 60px;
 	border-radius: 50%;
 	background-color: #43BCD1;
 	color: #fff;
@@ -73,6 +73,27 @@
 	border-bottom: 35px solid transparent;
 }
 
+.play:active{
+	background-color: orange;
+}
+
+.up:active{
+	border-bottom: 60px solid orange;
+}
+
+.down:active{
+	border-top: 60px solid orange;
+}
+
+.left:active{
+	border-right: 60px solid orange;
+}
+
+.right:active{
+	border-left: 60px solid orange;
+}
+
+
 @media(max-width: 768px){
 	.controls-block{
 		display: flex;	
@@ -85,12 +106,6 @@
 	.controls-block{
 		height: 46vh;
 		display: flex;
-	}
-
-	.play{
-		width: 90px;
-		height: 90px;
-		font-size: 20px;
 	}
 }
 
